@@ -191,7 +191,7 @@ with open('ping.txt','w') as ping:
         png = subprocess.run(['bash','cmd.sh'],stdout=ping,text=True)
 ping = open('ping.txt','r')
 ping_txt = ping.read()
-print
+
 if "100% packet loss" in ping_txt or "Host Unreachable" in ping_txt:
         print("CHECK YOUR OVPN CONNECTION\nIP IS NOT REACHABLE :/")
         exit()
