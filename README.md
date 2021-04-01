@@ -261,7 +261,7 @@ Now here we're running our fastest port scan script, It requires the last 3 digi
 And finally we need to press `ENTER` key to run this command
 
 ### Spliting terminal vertically
-We need to split our terminal and need to do directory bruteforceing there
+We need to split our terminal and need to do directory bruteforcing there
 
 ```python
 py.hotkey('CTRL','SHIFT','RIGHT')
@@ -273,7 +273,7 @@ My Hot key for splitting terminal vertically is `CTRL + SHIFT + RIGHT` Change yo
 py.hotkey('ALT','RIGHT')
 sleep(2)
 ```
-If we press `ALT + TAB` then we can go to that splited terminal and we can type commands there and run it <br>
+If we press `ALT + RIGHT` then we can go to that splited terminal and we can type commands there and run it <br>
 Change this if it's not same for you
 
 ### Directory Brute Forcing
