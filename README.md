@@ -1,12 +1,15 @@
+### See how it looks like
+preview link: 
+<br>
 # HOW TO CREATE YOUR OWN AUTOMATION SCRIPT 
 
-## Tamil language
+## In Tamil language
 
 If you can understand Tamil language then watch this video 👇 <br>
 Tutorial Video link: https://youtu.be/C9EAKWY37cQ <br>
 I explained every step clearly here <br>
 
-## English language
+## In English language 👇
 #### AUTOMATE CTFS
 Here we're going to automate some tasks that we do when playing CTFs (Specially for HackTheBox and TryHackMe)
 <br>
@@ -283,13 +286,13 @@ py.hotkey('ENTER')
 ```
 Now this will start the gobuster
 
-### opening needed terminals
+### opening required terminals
 Now I'm going to open a new tab with 4 terminals <br>
 See how we can do this
 
 ![1](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-1.png)
 
-Here this is the hot key to open a new tab <br> ok now let's see how to open it with 4 terminals
+Here this is the hot key to open a new tab `CRTL + SHIFT + T` <br> ok now let's see how to open it with 4 terminals
 
 ![2](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-2.jpg)
 
@@ -297,5 +300,60 @@ Go to your terminals settings and change this to 4 terminals
 
 ![3](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-3.png)
 
-Now you'll get beautiful terminals like this :)
+Now you'll get beautiful terminals like this :) <br>
 
+### Starting a netcat listener and a python server
+```python
+py.hotkey('ALT','RIGHT')
+py.hotkey('CTRL','SHIFT','DOWN')
+py.write('nc -lvvnp 9005')
+py.hotkey('ENTER')
+```
+Now I'm  moving to the right terminal by pressing `ALT + TAB` and splitting the terminal vertically by pressing `CTRL + SHIFT + DOWN` <br> and starting a netcat listener
+
+#### see how it looks like
+![4](https://github.com/jopraveen/jopraveen/blob/main/some-gifs/CTF-AUTOMATION-4.gif)
+
+I hope now you'll get an idea of what's happening here
+
+#### Now python server
+```python
+py.hotkey('ALT','UP')
+py.write('cd /home/kali/auto-ctf/www')
+py.hotkey('ENTER')
+py.write('python3 -m http.server 8080')
+py.hotkey('ENTER')
+```
+Ok now we're moving upwards and going to our folder (our payloads folder) and starting a python server there
+
+#### Opening Save-time.txt
+```python
+py.hotkey('ALT','DOWN')
+py.hotkey('ALT','DOWN')
+py.write('cd /home/kali/auto-ctf/www')
+py.hotkey('ENTER')
+py.write('cat save-time.txt')
+py.hotkey('ENTER')
+```
+Moving to the bottom last terminal and opeing our save-time.txt file
+
+### Opening Metasploit
+```python
+py.hotkey('ALT','LEFT')
+py.write('msfconsole')
+py.hotkey('ENTER')
+```
+Moving to left terminal and starting metasploit there
+
+### All Done
+```python
+py.hotkey('ALT','UP')
+py.write('figlet "LET\'S GO" | lolcat -a -d 3')
+py.hotkey('ENTER')
+```
+Ok now we completed All the tasks, So printing "Let's Go" <br><br>
+
+Make sure you changed all these stuffs, Then you can run this on your machine <br>
+If you have any issues, Kindly post it in the issues page. <br>
+I hope it's helpful to many peoples who do CTFs and It saves your valuable time
+<br> Thankyou :)
