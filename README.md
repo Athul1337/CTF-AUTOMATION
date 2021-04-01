@@ -240,7 +240,7 @@ sleep(2)
 
 ## Important part
 The above things in the script are similar to everyone, but hereafter you need to create your own script... It's not same for everyone :/ <br>
-I'll so you some examples to make it easier
+I'll show you some examples to make it easier
 
 ### Switching application
 Just now we opened a browser, We need to switch back to terminal to run next tasks <br>
@@ -266,7 +266,7 @@ We need to split our terminal and need to do directory bruteforceing there
 ```python
 py.hotkey('CTRL','SHIFT','RIGHT')
 ```
-My Hot key for splitting terminal vertically is `CTRL + SHIFT + T` Change your's there
+My Hot key for splitting terminal vertically is `CTRL + SHIFT + RIGHT` Change your's there
 
 #### Going to that terminal
 ```python
