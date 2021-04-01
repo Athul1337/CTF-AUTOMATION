@@ -1,5 +1,5 @@
 ### See how it looks like
-preview link: 
+preview link: https://www.youtube.com/watch?v=C9EAKWY37cQ&t=320s
 <br>
 # HOW TO CREATE YOUR OWN AUTOMATION SCRIPT 
 
